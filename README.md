@@ -1,4 +1,4 @@
-# Morphosyntax-Stanza
+# Génération de phrases bien formées
 
 Voir un exemple d'utilisation : https://colab.research.google.com/drive/14xd7QgkKvAJHSxzK4khHPK1khlIM5DuR?usp=sharing
 
