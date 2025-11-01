@@ -1,11 +1,6 @@
 from typing import List, Dict
 
 try:  # pragma: no cover - optional dependency
-    import spacy
-except ImportError:  # pragma: no cover - spaCy is optional when not selected
-    spacy = None
-
-try:  # pragma: no cover - optional dependency
     import stanza
 except ImportError:  # pragma: no cover - Stanza is optional when not selected
     stanza = None
