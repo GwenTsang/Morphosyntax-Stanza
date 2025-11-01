@@ -12,7 +12,7 @@ class AgreementChecker:
 
     def __init__(self, *, pre_adj_max=1, post_adj_max=2,
                  max_total_adjs=3, max_consecutive_same_adj=1,
-                 max_same_adj_per_sentence=2,
+                 max_same_adj_per_sentence=1,
                  require_det=True, require_noun=True, default_subj_person="3"):
         self.pre_adj_max = pre_adj_max
         self.post_adj_max = post_adj_max
