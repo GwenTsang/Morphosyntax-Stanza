@@ -12,11 +12,13 @@ class AgreementChecker:
 
     def __init__(self, *, pre_adj_max=1, post_adj_max=2,
                  max_total_adjs=3, max_consecutive_same_adj=1,
+                 max_same_adj_per_sentence=2,
                  require_det=True, require_noun=True, default_subj_person="3"):
         self.pre_adj_max = pre_adj_max
         self.post_adj_max = post_adj_max
         self.max_total_adjs = max_total_adjs
-        self.max_consecutive_same_adj = max_consecutive_same_adj  # autorise 2 adj identiques de suite par défaut
+        self.max_consecutive_same_adj = max_consecutive_same_adj
+        self.max_same_adj_per_sentence = max_same_adj_per_sentence
         self.require_det = require_det
         self.require_noun = require_noun
         self.default_subj_person = default_subj_person
@@ -99,6 +101,7 @@ class AgreementChecker:
         total_adjs = sum(1 for t in tokens if t.get("pos") == "ADJ")
         if total_adjs > self.max_total_adjs: return False
         run_lemma, run_len = None, 0
+        lemma_counts = {}
         for t in tokens:
             if t.get("pos") != "ADJ":
                 run_lemma, run_len = None, 0
@@ -110,6 +113,10 @@ class AgreementChecker:
                 run_lemma, run_len = lemma, 1
             if run_len > self.max_consecutive_same_adj:  # p.ex. "petit petit petit" refuse, "petit petit" ok
                 return False
+            if lemma:
+                lemma_counts[lemma] = lemma_counts.get(lemma, 0) + 1
+                if lemma_counts[lemma] > self.max_same_adj_per_sentence:
+                    return False
         return True
 
     # ---- Orchestrateur
