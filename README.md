@@ -11,10 +11,8 @@ pip install -r requirements.txt
 ```
 
 ```bash
-git clone https://github.com/beer-asr/pywrapfst.git
-cd pywrapfst
-python -m pip install cython
-python setup.py build_ext install
+!git clone https://github.com/beer-asr/pywrapfst.git
+!cd pywrapfst
 ```
 
 ```python
