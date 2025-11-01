@@ -6,22 +6,23 @@ La méthodologie fonctionne mais elle est *sous-optimisée*
 
 ## Etapes à faire manuellement :
 
-   ```bash
-   pip install -r requirements.txt
-   ```
- 
-     ```bash
-     git clone https://github.com/beer-asr/pywrapfst.git
-     cd pywrapfst
-     python -m pip install cython
-     python setup.py build_ext install
-     ```
+```bash
+pip install -r requirements.txt
+```
 
-     ```python
-    !pip install -q stanza
-    import stanza
-    stanza.download('fr')
-     ```
+```bash
+git clone https://github.com/beer-asr/pywrapfst.git
+cd pywrapfst
+python -m pip install cython
+python setup.py build_ext install
+```
+
+```python
+!pip install -q stanza
+import stanza
+stanza.download('fr')
+```
+
 
 TO DO : Ajouter un `py` qui réutilise `agreements.py` pour vérifier si une phrase est bien formée au niveau des accords.
 
