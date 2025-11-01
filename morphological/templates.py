@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from collections import defaultdict
 
@@ -98,7 +98,10 @@ class MorphosyntacticTemplate:
             current_pos_sequence: List[str],
             pos_index: int,
             repeat_count: int = 0,
+            adj_counts: Optional[Dict[str, int]] = None,
         ) -> None:
+            if adj_counts is None:
+                adj_counts = {}
             if pos_index == len(pattern):
                 if current_words:
                     candidates.append(current_words.copy())
@@ -119,6 +122,9 @@ class MorphosyntacticTemplate:
                         continue
 
                     if pos == 'ADJ':
+                        current_count = adj_counts.get(word, 0)
+                        if current_count >= 2:
+                            continue
                         consecutive_identical = 0
                         idx = len(current_words) - 1
 
@@ -137,6 +143,11 @@ class MorphosyntacticTemplate:
                     current_tokens.extend(word_tokens)
                     current_pos_sequence.append(pos)
 
+                    updated_adj_counts = adj_counts
+                    if pos == 'ADJ':
+                        updated_adj_counts = adj_counts.copy()
+                        updated_adj_counts[word] = current_count + 1
+
                     if not self._should_prune(current_tokens, constraints):
                         if is_multiple and repeat_count + 1 <= max_repetitions:
                             backtrack(
@@ -145,6 +156,7 @@ class MorphosyntacticTemplate:
                                 current_pos_sequence,
                                 pos_index,
                                 repeat_count + 1,
+                                updated_adj_counts,
                             )
 
                         backtrack(
@@ -153,6 +165,7 @@ class MorphosyntacticTemplate:
                             current_pos_sequence,
                             pos_index + 1,
                             0,
+                            updated_adj_counts,
                         )
 
                     del current_tokens[-len(word_tokens):]
@@ -168,7 +181,7 @@ class MorphosyntacticTemplate:
                     0,
                 )
 
-        backtrack([], [], [], 0, 0)
+        backtrack([], [], [], 0, 0, {})
         return candidates
 
     def _precompute_lexical_analyses(
@@ -225,5 +238,8 @@ class MorphosyntacticTemplate:
             else:
                 # Contrainte inconnue : considérer comme satisfaite pour ne pas bloquer.
                 continue
+
+        if not self.agreement_checker.check_anti_repetition(tokens):
+            return False
 
         return True
