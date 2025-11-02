@@ -1,6 +1,5 @@
 
 Ce repo python ne fonctionne qu'avec `Stanza` et seulement en français.
-Voir un exemple d'utilisation : https://colab.research.google.com/drive/14xd7QgkKvAJHSxzK4khHPK1khlIM5DuR?usp=sharing
 
 La méthodologie fonctionne mais elle est un peu *sous-optimisée*, on pourrait faire un meilleur [élagage](https://fr.wikipedia.org/wiki/Élagage_alpha-bêta) dans la *beam search* .
 
@@ -24,6 +23,8 @@ stanza.download('fr')
 ```python
 !python main.py --mode generate
 ```
+
+Exemple : https://colab.research.google.com/drive/14xd7QgkKvAJHSxzK4khHPK1khlIM5DuR?usp=sharing
 
 ## Vérifier si une phrase est bien formée :
 
