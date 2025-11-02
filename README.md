@@ -1,8 +1,9 @@
 # Génération de phrases bien formées
 
+Ce repo python ne fonctionne qu'avec `Stanza` et seulement en français.
 Voir un exemple d'utilisation : https://colab.research.google.com/drive/14xd7QgkKvAJHSxzK4khHPK1khlIM5DuR?usp=sharing
 
-La méthodologie fonctionne mais elle est *sous-optimisée*
+La méthodologie fonctionne mais elle est un peu *sous-optimisée*, on pourrait faire un meilleur [élagage](https://fr.wikipedia.org/wiki/Élagage_alpha-bêta) dans la *beam search* .
 
 ## Etapes à faire manuellement :
 
