@@ -13,7 +13,6 @@ def main():
     args = parser.parse_args()
 
     print("Analyzer Initialisation")
-    # Toujours Stanza : le constructeur n’accepte plus 'tool'
     analyzer = MorphologicalAnalyzer(language=args.language)
     print("Ready")
 
