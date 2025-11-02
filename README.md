@@ -1,4 +1,3 @@
-# Génération de phrases bien formées
 
 Ce repo python ne fonctionne qu'avec `Stanza` et seulement en français.
 Voir un exemple d'utilisation : https://colab.research.google.com/drive/14xd7QgkKvAJHSxzK4khHPK1khlIM5DuR?usp=sharing
@@ -21,9 +20,18 @@ pip install -r requirements.txt
 import stanza
 stanza.download('fr')
 ```
+## Tester la génération de phrases bien formées :
+```python
+!python main.py --mode generate
+```
+
+## Vérifier si une phrase est bien formée :
 
 
-TO DO : Ajouter un `py` qui réutilise `agreements.py` pour vérifier si une phrase est bien formée au niveau des accords.
+```python
+python verification.py "Votre phrase"
+```
+
 
 ## Bibliographie
 
