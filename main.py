@@ -27,8 +27,8 @@ def main():
         # Exemple de génération
         lexical_items = {
             'DET': ['Le', 'La', 'Les'],
-            'ADJ': ['petit', 'petite', 'grand', 'grande'],
-            'NOUN': ['chat', 'chatte', 'chien', 'chienne']
+            'ADJ': ['charmant', 'charmante', 'beau', 'belle'],
+            'NOUN': ['monsieur', 'loutre', 'castor', 'girafe']
         }
 
         sentences = template_gen.generate_with_constraints('SN', lexical_items)
