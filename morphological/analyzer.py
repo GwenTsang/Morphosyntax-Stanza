@@ -16,13 +16,13 @@ from morphological.dictionaries import MorphologicalDictionary
 class MorphologicalAnalyzer:
     def __init__(self, language: str = 'fr'):
         """
-        Analyseur morpho-syntaxique basé exclusivement sur Stanza.
+        Analyseur morpho-syntaxique basé sur Stanza.
         """
         self.language = language
 
         if stanza is None:
             raise ImportError(
-                "Stanza n'est pas installé. Installez-le pour utiliser l'analyseur."
+                "Stanza n'est pas installé, installez-le."
             )
 
         # Téléchargement silencieux des ressources nécessaires (tokenize, mwt, pos)
