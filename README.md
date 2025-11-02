@@ -30,7 +30,7 @@ Exemple : https://colab.research.google.com/drive/14xd7QgkKvAJHSxzK4khHPK1khlIM5
 
 
 ```python
-python verification.py "Votre phrase"
+!python verification.py "Votre phrase"
 ```
 
 
